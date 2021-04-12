@@ -1,9 +1,13 @@
 FROM python:3.8-slim
 
-COPY ./app/ /user/src/app
-COPY ./docker/* /usr/src/app/
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+COPY ./app/ /usr/src/app
 
 WORKDIR /usr/src/app
+
+RUN ls
 
 RUN pip3 install --upgrade pip && \
   pip3 install -r requirements.txt --no-cache-dir
